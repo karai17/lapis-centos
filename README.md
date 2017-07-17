@@ -5,8 +5,18 @@ web applications that use the Lapis framework.
 
 # Included
 
-This image is a CentOS environment using the OpenResty web server bundle. Also
-included is LuaJIT, LuaRocks, Lapis, Nano, and OpenSSL.
+This image includes the following software:
+
+* GCC
+* Git
+* Lapis
+* LuaJIT
+* LuaRocks
+* Make
+* Nano
+* OpenResty
+* OpenSSL
+* Unzip
 
 # Notes
 
