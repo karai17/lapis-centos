@@ -21,7 +21,7 @@ RUN yum install -y epel-release && \
 		openssl \
 		openssl-devel \
 		unzip && \
-	yum clean all \
+	yum clean all && \
 	cd /tmp  && \
 	curl -fSL http://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz -o luarocks-${LUAROCKS_VERSION}.tar.gz && \
 	tar xzf luarocks-${LUAROCKS_VERSION}.tar.gz && \
@@ -30,8 +30,9 @@ RUN yum install -y epel-release && \
 		--prefix=/usr \
 		--lua-suffix=jit \
 		--with-lua-include=/usr/include/luajit-2.0 && \
-	make build \
+	make build && \
 	make install && \
+	cd / && \
 	rm /tmp/* -r && \
 	ln -sf /dev/stdout /usr/local/openresty/nginx/logs/access.log && \
 	ln -sf /dev/stderr /usr/local/openresty/nginx/logs/error.log && \
