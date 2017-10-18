@@ -2,27 +2,32 @@ FROM centos:latest
 
 MAINTAINER Landon Manning <lmanning17@gmail.com>
 
-ARG LUAROCKS_VERSION="2.4.1"
-ARG RPM_VERSION="1.11.2.4"
+# Software versions
+ARG LUAROCKS_VERSION="2.4.3"
+ARG RESTY_VERSION="1.11.2.5"
 
+# Necessary files
 COPY OpenResty.repo /etc/yum.repos.d/OpenResty.repo
 
-RUN yum install -y epel-release && \
-	yum install -y \
+# Install from repos
+RUN yum -y update; yum clean all
+RUN yum -y install epel-release; yum clean all
+RUN yum -y install \
 		gcc \
 		git \
 		luajit \
 		luajit-devel \
 		make \
-		nano \
-		openresty-${RPM_VERSION} \
-		openresty-opm-${RPM_VERSION} \
-		openresty-resty-${RPM_VERSION} \
+		openresty-${RESTY_VERSION} \
+		openresty-opm-${RESTY_VERSION} \
+		openresty-resty-${RESTY_VERSION} \
 		openssl \
 		openssl-devel \
-		unzip && \
-	yum clean all && \
-	cd /tmp  && \
+		unzip; \
+		yum clean all
+
+# Install LuaRocks manually
+RUN cd /tmp  && \
 	curl -fSL http://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz -o luarocks-${LUAROCKS_VERSION}.tar.gz && \
 	tar xzf luarocks-${LUAROCKS_VERSION}.tar.gz && \
 	cd luarocks-${LUAROCKS_VERSION} && \
@@ -33,9 +38,27 @@ RUN yum install -y epel-release && \
 	make build && \
 	make install && \
 	cd / && \
-	rm /tmp/* -r && \
-	ln -sf /dev/stdout /usr/local/openresty/nginx/logs/access.log && \
-	ln -sf /dev/stderr /usr/local/openresty/nginx/logs/error.log && \
-	luarocks install lapis
+	rm /tmp/* -r
 
+# Install from LuaRocks
+RUN luarocks install luasec
+RUN luarocks install lapis
+
+# Link OpenResty logs to /dev
+RUN ln -sf /dev/stdout /usr/local/openresty/nginx/logs/access.log
+RUN ln -sf /dev/stderr /usr/local/openresty/nginx/logs/error.log
+
+# Update PATH
 ENV PATH=$PATH:/usr/local/openresty/luajit/bin/:/usr/local/openresty/nginx/sbin/:/usr/local/openresty/bin/
+
+# Prepare volumes
+VOLUME /var/data
+VOLUME /var/www
+
+# I like this number so we're gonna use it internally
+EXPOSE 2808
+
+# Default to development environment
+WORKDIR /var/www
+ENTRYPOINT ["/usr/bin/lapis"]
+CMD ["server", "devel"]

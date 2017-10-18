@@ -12,8 +12,8 @@ This image includes the following software:
 * Lapis
 * LuaJIT
 * LuaRocks
+* LuaSec
 * Make
-* Nano
 * OpenResty
 * OpenSSL
 * Unzip
@@ -21,6 +21,6 @@ This image includes the following software:
 # Notes
 
 Due to an issue with lua-cjson not compiling on the latest beta of LuaJIT 2.1,
-this Docker image installs LuaJIT 2.0.4 from the CentOS EPEL repo and uses that
+this Docker image installs LuaJIT 2.0 from the CentOS EPEL repo and uses that
 for LuaRocks. OpenResty still uses its own local LuaJIT 2.1, so let's hope the
-binaries built on LuaJIT 2.0.4 are compatible!
+binaries built on LuaJIT 2.0 are compatible!
