@@ -7,13 +7,17 @@ web applications that use the Lapis framework.
 
 This image includes the following software:
 
+* bcrypt (Lua)
 * GCC
 * Git
-* Lapis
+* i18n (Lua)
+* Lapis (Lua)
 * LuaJIT
 * LuaRocks
-* LuaSec
+* LuaSec (Lua)
 * Make
+* Mailgun (Lua)
+* Markdown (Lua)
 * OpenResty
 * OpenSSL
 * Unzip
