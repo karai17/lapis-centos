@@ -4,7 +4,7 @@ MAINTAINER Landon Manning <lmanning17@gmail.com>
 
 # Software versions
 ARG LUAROCKS_VERSION="2.4.3"
-ARG RESTY_VERSION="1.11.2.5"
+ARG RESTY_VERSION="1.13.6.1"
 
 # Necessary files
 COPY OpenResty.repo /etc/yum.repos.d/OpenResty.repo
@@ -42,7 +42,11 @@ RUN cd /tmp  && \
 
 # Install from LuaRocks
 RUN luarocks install luasec
+RUN luarocks install bcrypt
+RUN luarocks install i18n
 RUN luarocks install lapis
+RUN luarocks install mailgun
+RUN luarocks install markdown
 
 # Link OpenResty logs to /dev
 RUN ln -sf /dev/stdout /usr/local/openresty/nginx/logs/access.log
