@@ -8,7 +8,7 @@ following license:
 
 # The MIT/X11 License (MIT)
 
-Lapis Docker Image is copyright (c) 2017 Landon Manning <lmanning17@gmail.com>.
+Lapis Docker Image is copyright (c) 2018 Landon Manning <lmanning17@gmail.com>.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
