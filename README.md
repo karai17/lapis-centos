@@ -7,8 +7,7 @@ web applications that use the Lapis framework.
 
 ## Environment Variables
 
-* **LUAROCKS_VERSION** - Default is `2.4.4`
-* **RESTY_VERSION** - Default is `1.13.6.2`
+* **LUAROCKS_VERSION** - Default is `3.0.4`
 * **SERVER_MODE** - Default is `production`
 
 ## Example Script
@@ -18,7 +17,7 @@ docker run \
 -dti \
 -v "/home/karai/lapis-test/data:/var/data" \
 -v "/home/karai/lapis-test/www:/var/www" \
--e SERVER_MODE="development"
+-e SERVER_MODE="development" \
 -p 8080:80 \
 --name lapis-test \
 karai17/lapis-centos:latest
