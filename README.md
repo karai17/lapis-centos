@@ -29,10 +29,3 @@ Please visit the GitHub repository to download an example application that is
 pre-configured for this image. The application is in the `www` directory. Copy
 the contents of this directory into your `www` volume as listed in the above
 example script.
-
-# Notes
-
-Due to an issue with lua-cjson not compiling on the latest beta of LuaJIT 2.1,
-this Docker image installs LuaJIT 2.0 from the CentOS EPEL repo and uses that
-for LuaRocks. OpenResty still uses its own local LuaJIT 2.1, so let's hope the
-binaries built on LuaJIT 2.0 are compatible!
