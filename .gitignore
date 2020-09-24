@@ -1,3 +1,11 @@
+# Files
 *_temp
 *.compiled
+*.log
+*.out
+
+# Directories
 logs
+data/*
+
+!.keep

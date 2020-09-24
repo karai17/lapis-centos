@@ -7,7 +7,6 @@ web applications that use the Lapis framework.
 
 ## Environment Variables
 
-* **LUAROCKS_VERSION** - Default is `3.0.4`
 * **SERVER_MODE** - Default is `production`
 
 ## Example Script
