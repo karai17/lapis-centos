@@ -9,7 +9,7 @@ web applications that use the Lapis framework.
 
 * **SERVER_MODE** - Default is `production`
 
-## Example Script
+## Deploy
 
 ```sh
 docker run \
@@ -22,9 +22,12 @@ docker run \
 karai17/lapis-centos:latest
 ```
 
+```sh
+docker-compose up
+```
+
 ## Example Application
 
 Please visit the GitHub repository to download an example application that is
 pre-configured for this image. The application is in the `www` directory. Copy
-the contents of this directory into your `www` volume as listed in the above
-example script.
+the contents of this directory into your `www` volume.

@@ -12,10 +12,10 @@ VOLUME /var/www
 
 # Install from Yum
 RUN yum -y install \
+	epel-release \
 	gcc \
 	openresty-openssl-devel \
 	openssl-devel \
-	unzip \
 	; yum clean all
 
 # Install from LuaRocks

@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  www:
+    environment:
+      - SERVER_MODE=production
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./www:/var/www
+      - ./data:/var/data
+    ports:
+      - 8080:80
+    restart: always
+    command: bash -c "/usr/local/bin/docker-entrypoint.sh"
