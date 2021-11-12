@@ -18,6 +18,8 @@ RUN yum -y install \
 	openssl-devel \
 	; yum clean all
 
+RUN yum config-manager --set-enabled powertools
+
 # Install from LuaRocks
 RUN luarocks install luasec \
 	&& luarocks install bcrypt \
