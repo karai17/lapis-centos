@@ -7,7 +7,7 @@ web applications that use the Lapis framework.
 
 ## Environment Variables
 
-* **SERVER_MODE** - Default is `production`
+* **LAPIS_ENV** - Default is `production`
 
 ## Deploy
 
@@ -16,7 +16,7 @@ docker run \
 -dti \
 -v "/home/karai/lapis-test/data:/var/data" \
 -v "/home/karai/lapis-test/www:/var/www" \
--e SERVER_MODE="development" \
+-e LAPIS_ENV="development" \
 -p 8080:80 \
 --name lapis-test \
 karai17/lapis-centos:latest

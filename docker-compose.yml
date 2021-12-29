@@ -1,12 +1,15 @@
-version: '3'
+version: '2.4'
 
 services:
   www:
     environment:
-      - SERVER_MODE=production
+      LAPIS_ENV: production
+    mem_limit: 50mb
+    memswap_limit: 50mb
     build:
       context: ./
       dockerfile: Dockerfile
+    image: lapis-centos:latest
     volumes:
       - ./www:/var/www
       - ./data:/var/data

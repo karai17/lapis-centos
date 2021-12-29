@@ -15,11 +15,11 @@ config("development", {
 })
 
 config("production", {
-	code_cache = "on",
 	port       = 80,
 	body_size  = body_size,
 	lua_path   = lua_path,
-	lua_cpath  = lua_cpath
+	lua_cpath  = lua_cpath,
+	code_cache = "on"
 })
 
 config("test", {

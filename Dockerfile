@@ -2,9 +2,11 @@ FROM openresty/openresty:centos
 
 LABEL maintainer="Landon Manning <lmanning17@gmail.com>"
 
-# Environment
-ENV SERVER_MODE="production"
+# Build Args
 ARG OPENSSL_DIR="/usr/local/openresty/openssl"
+
+# Environment
+ENV LAPIS_ENV="production"
 
 # Prepare volumes
 VOLUME /var/data
@@ -21,18 +23,18 @@ RUN yum -y install \
 RUN yum config-manager --set-enabled powertools
 
 # Install from LuaRocks
-RUN luarocks install luasec \
-	&& luarocks install bcrypt \
-	&& luarocks install busted \
-	&& luarocks install i18n \
-	&& luarocks install lapis \
+RUN luarocks install luasec
+RUN luarocks install bcrypt
+RUN luarocks install busted
+RUN luarocks install i18n
+RUN luarocks install lapis \
 		CRYPTO_DIR=${OPENSSL_DIR} \
 		CRYPTO_INCDIR=${OPENSSL_DIR}/include \
 		OPENSSL_DIR=${OPENSSL_DIR} \
-		OPENSSL_INCDIR=${OPENSSL_DIR}/include \
-	&& luarocks install luacov \
-	&& luarocks install mailgun \
-	&& luarocks install markdown
+		OPENSSL_INCDIR=${OPENSSL_DIR}/include
+RUN luarocks install luacov
+RUN luarocks install mailgun
+RUN luarocks install markdown
 
 # Entrypoint
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
