@@ -9,6 +9,18 @@ web applications that use the Lapis framework.
 
 * **LAPIS_ENV** - Default is `production`
 
+## Pre-installed Rocks
+
+* bcrypt
+* busted
+* i18n
+* lapis
+* lsqlite3
+* luacov
+* luasec
+* mailgun
+* markdown
+
 ## Deploy
 
 ```sh
@@ -23,7 +35,11 @@ karai17/lapis-centos:latest
 ```
 
 ```sh
-docker-compose up
+./dev.sh
+```
+
+```sh
+./prod.sh
 ```
 
 ## Example Application

@@ -18,6 +18,7 @@ RUN yum -y install \
 	gcc \
 	openresty-openssl-devel \
 	openssl-devel \
+	sqlite-devel \
 	; yum clean all
 
 RUN yum config-manager --set-enabled powertools
@@ -28,10 +29,11 @@ RUN luarocks install bcrypt
 RUN luarocks install busted
 RUN luarocks install i18n
 RUN luarocks install lapis \
-		CRYPTO_DIR=${OPENSSL_DIR} \
-		CRYPTO_INCDIR=${OPENSSL_DIR}/include \
-		OPENSSL_DIR=${OPENSSL_DIR} \
-		OPENSSL_INCDIR=${OPENSSL_DIR}/include
+	CRYPTO_DIR=${OPENSSL_DIR} \
+	CRYPTO_INCDIR=${OPENSSL_DIR}/include \
+	OPENSSL_DIR=${OPENSSL_DIR} \
+	OPENSSL_INCDIR=${OPENSSL_DIR}/include
+RUN luarocks install lsqlite3
 RUN luarocks install luacov
 RUN luarocks install mailgun
 RUN luarocks install markdown

@@ -9,7 +9,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: lapis-centos:latest
+    image: karai17/lapis-centos:latest
     volumes:
       - ./www:/var/www
       - ./data:/var/data
